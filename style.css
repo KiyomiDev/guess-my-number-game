@@ -1,0 +1,17 @@
+/**************************/
+/* START GENERAL RULES */
+/**************************/
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+/**************************/
+/* END GENERAL RULES */
+/**************************/

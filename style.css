@@ -123,6 +123,59 @@ body {
 /**************************/
 
 /**************************/
+/* START MAIN */
+/**************************/
+main {
+  height: 65vh;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  column-gap: 13.9rem;
+}
+
+.left-side,
+.right-side {
+  flex-basis: 50%;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guess-input {
+  width: 27rem;
+  height: 11rem;
+  border: 4px solid var(--main-color);
+  background-color: transparent;
+  color: var(--main-color);
+  font-size: 4rem;
+  font-family: inherit;
+  text-align: center;
+  margin-bottom: 2.8rem;
+  position: relative;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.right-side .message {
+  margin-bottom: 7rem;
+}
+
+.score {
+  margin-bottom: 1.7rem;
+}
+/**************************/
+/* END MAIN */
+/**************************/
+
+/**************************/
 /* HELPER CLASSES */
 /**************************/
 .hide {

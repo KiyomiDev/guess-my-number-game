@@ -216,3 +216,9 @@ main {
   pointer-events: none;
   visibility: hidden;
 }
+
+.hide-slow {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition-duration: var(--transition-duration);
+}

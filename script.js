@@ -5,7 +5,7 @@ const header = document.querySelector('.header');
 const mainSection = document.querySelector('main');
 const score = document.querySelector('.score span');
 const numberBetween = document.querySelector('.number-between');
-let max, selectedLevel, selectedLevelScore;
+let max, selectedLevel, selectedLevelScore, randomNum;
 
 levelsBox.forEach(level => {
   level.addEventListener('click', () => {
@@ -34,3 +34,5 @@ function setLevelScore(selectedLevel) {
   else selectedLevelScore = 30;
   score.textContent = selectedLevelScore;
 }
+
+const randomNumber = (max) => randomNum = Math.floor(Math.random() * max) + 1;

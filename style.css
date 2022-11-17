@@ -13,6 +13,18 @@ html {
   font-size: 62.5%;
 }
 
+@media (max-width: 55em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 25em) {
+  html {
+    font-size: 37.5%;
+  }
+}
+
 :root {
   --main-color: #eee;
   --secondary-color: #222;
@@ -97,11 +109,25 @@ body {
   position: relative;
 }
 
+@media (max-width: 25em) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
 .header h1 {
   width: 100%;
   text-align: center;
   font-size: 3.7rem;
   line-height: 1.6;
+}
+
+@media (max-width: 25em) {
+  .header h1 {
+    font-size: 2.7rem;
+  }
 }
 
 .number-between {
@@ -131,6 +157,12 @@ main {
   display: flex;
   align-items: center;
   column-gap: 13.9rem;
+}
+
+@media (max-width: 55em) {
+  main {
+    flex-direction: column-reverse;
+  }
 }
 
 .left-side,

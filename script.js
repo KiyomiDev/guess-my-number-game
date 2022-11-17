@@ -10,6 +10,10 @@ const score = document.querySelector('.score span');
 const highscore = document.querySelector('.highscore span');
 const message = document.querySelector('.message');
 const numberBetween = document.querySelector('.number-between');
+const correct = new Audio("sound-effects/correct.mp3"),
+      fail = new Audio("sound-effects/fail.mp3"),
+      lost = new Audio("sound-effects/lost.mp3");
+      
 let max, selectedLevel, selectedLevelScore, randomNum;
 
 levelsBox.forEach(level => {
@@ -50,16 +54,19 @@ function checkNumber() {
   else if (guessInputValue < 1) message.textContent = `⛔ Enter number between (1 and ${max})`;
     
   else if (guessInputValue > randomNum) {
+    fail.play();
     message.textContent = `My number is less than  ${guessInputValue}`;
     score.textContent -= 1;
   }
     
   else if (guessInputValue < randomNum) {
+    fail.play();
     message.textContent = `My number is greater than ${guessInputValue}`;
     score.textContent -= 1;
   }
 
   else {
+    correct.play();
     message.textContent = `🎉 Correct Number!`;
     highscore.textContent = score.textContent;
     checkBtn.removeEventListener('click', checkNumber);
@@ -67,6 +74,7 @@ function checkNumber() {
   }
   
   if (score.textContent === '0') {
+    setTimeout(() => lost.play(), 300);
     message.textContent = `👎 You lost the game!`
     checkBtn.removeEventListener('click', checkNumber);
   }

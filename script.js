@@ -3,6 +3,7 @@ const gameContainer = document.querySelector('.container');
 const levelsContainer = document.querySelector('.select-level');
 const levelsBox = document.querySelectorAll('.level');
 const header = document.querySelector('.header');
+const secretNumEl = document.querySelector('.number');
 const mainSection = document.querySelector('main');
 const guessInput = document.querySelector('.guess-input');
 const checkBtn = document.querySelector('.check');
@@ -71,6 +72,7 @@ function checkNumber() {
     highscore.textContent = score.textContent;
     checkBtn.removeEventListener('click', checkNumber);
     gameContainer.style.backgroundColor = '#60b347';
+    secretNumEl.textContent = `${randomNum}`;
   }
   
   if (score.textContent === '0') {

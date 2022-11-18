@@ -38,49 +38,45 @@ levelsBox.forEach(level => {
   })
 });
 
-const numberBetweenText = (max) => numberBetween.textContent = `(Between 1 and ${max})`;
+const changeElContent = (el, text) => el.textContent = text;
+
+const numberBetweenText = (max) => changeElContent(numberBetween, `(Between 1 and ${max})`);
 
 function setLevelScore(selectedLevel) {
   if (selectedLevel === 'easy') selectedLevelScore = 20;
   else if (selectedLevel === 'medium') selectedLevelScore = 25;
   else selectedLevelScore = 30;
-  score.textContent = selectedLevelScore;
+  changeElContent(score, selectedLevelScore);
 }
 
 const randomNumber = (max) => randomNum = Math.floor(Math.random() * max) + 1;
 
 function checkNumber() {
   let guessInputValue = guessInput.value;
-  if (!guessInputValue) message.textContent = `⛔️ No number!`;
+  if (!guessInputValue) changeElContent(message, `⛔️ No number!`);
     
-  else if (guessInputValue < 1) message.textContent = `⛔ Enter number between (1 and ${max})`;
+  else if (guessInputValue < 1 || guessInputValue > max) changeElContent(message, `⛔ Enter number between (1 and ${max})`);
     
-  else if (guessInputValue > randomNum) {
+  else if (guessInputValue != randomNum) {
     fail.play();
-    message.textContent = `My number is less than  ${guessInputValue}`;
-    score.textContent -= 1;
-  }
-    
-  else if (guessInputValue < randomNum) {
-    fail.play();
-    message.textContent = `My number is greater than ${guessInputValue}`;
+    changeElContent(message, `My number is ${guessInputValue > randomNum ? 'less' : 'greater'} than ${guessInputValue}`);
     score.textContent -= 1;
   }
 
   else {
     correct.play();
-    message.textContent = `🎉 Correct Number!`;
+    changeElContent(message, `🎉 Correct Number!`);
     checkBtn.removeEventListener('click', checkNumber);
     gameContainer.style.backgroundColor = '#60b347';
-    secretNumEl.textContent = `${randomNum}`;
+    changeElContent(secretNumEl, `${randomNum}`);
     if (score.textContent > highscore.textContent) {
-      highscore.textContent = score.textContent;
+      changeElContent(highscore, score.textContent)
     }
   }
   
   if (score.textContent === '0') {
     setTimeout(() => lost.play(), 300);
-    message.textContent = `👎 You lost the game!`
+    changeElContent(message, `👎 You lost the game!`);
     checkBtn.removeEventListener('click', checkNumber);
   }
 }
@@ -89,9 +85,9 @@ checkBtn.addEventListener('click', checkNumber);
 
 const playAgain = _ => {
   randomNumber(max);
-  secretNumEl.textContent = `?`;
-  message.textContent = `Start guessing...`;
-  score.textContent = selectedLevelScore;
+  changeElContent(secretNumEl, `?`);
+  changeElContent(message, `Start guessing...`);
+  changeElContent(score, selectedLevelScore);
   guessInput.value = '';
   gameContainer.style.backgroundColor = '#222';
   checkBtn.addEventListener('click', checkNumber);

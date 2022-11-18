@@ -70,10 +70,12 @@ function checkNumber() {
   else {
     correct.play();
     message.textContent = `🎉 Correct Number!`;
-    highscore.textContent = score.textContent;
     checkBtn.removeEventListener('click', checkNumber);
     gameContainer.style.backgroundColor = '#60b347';
     secretNumEl.textContent = `${randomNum}`;
+    if (score.textContent > highscore.textContent) {
+      highscore.textContent = score.textContent;
+    }
   }
   
   if (score.textContent === '0') {

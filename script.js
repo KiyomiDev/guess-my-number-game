@@ -10,6 +10,7 @@ const checkBtn = document.querySelector('.check');
 const score = document.querySelector('.score span');
 const highscore = document.querySelector('.highscore span');
 const message = document.querySelector('.message');
+const again = document.querySelector('.play-again');
 const numberBetween = document.querySelector('.number-between');
 const correct = new Audio("sound-effects/correct.mp3"),
       fail = new Audio("sound-effects/fail.mp3"),
@@ -83,3 +84,15 @@ function checkNumber() {
 }
 
 checkBtn.addEventListener('click', checkNumber);
+
+const playAgain = _ => {
+  randomNumber(max);
+  secretNumEl.textContent = `?`;
+  message.textContent = `Start guessing...`;
+  score.textContent = selectedLevelScore;
+  guessInput.value = '';
+  gameContainer.style.backgroundColor = '#222';
+  checkBtn.addEventListener('click', checkNumber);
+}
+
+again.addEventListener('click', playAgain);

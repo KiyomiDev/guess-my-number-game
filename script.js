@@ -32,6 +32,7 @@ levelsBox.forEach(level => {
       levelsContainer.classList.add('hide');
       header.classList.remove('hide');
       mainSection.classList.remove('hide');
+      guessInput.focus();
     }, 600);
 
     numberBetweenText(max);
@@ -95,6 +96,7 @@ const playAgain = _ => {
   gameContainer.style.backgroundColor = '#222';
   gameEnd(false)
   disableInput(false);
+  guessInput.focus();
 }
 
 again.addEventListener('click', playAgain);
@@ -112,3 +114,5 @@ function gameEnd(end) {
     checkBtn.classList.remove('not-allowed');
   }
 }
+
+guessInput.addEventListener('focusout', (e) => e.target.focus());

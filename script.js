@@ -78,6 +78,7 @@ function checkNumber() {
     setTimeout(() => lost.play(), 300);
     changeElContent(message, `👎 You lost the game!`);
     checkBtn.removeEventListener('click', checkNumber);
+    changeElContent(secretNumEl, `${randomNum}`);
   }
 }
 

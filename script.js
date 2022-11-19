@@ -116,3 +116,8 @@ function gameEnd(end) {
 }
 
 guessInput.addEventListener('focusout', (e) => e.target.focus());
+
+guessInput.addEventListener('keypress', _ => {
+  if (e.key === 'Enter')
+    checkBtn.click();
+})

@@ -69,6 +69,7 @@ function checkNumber() {
     gameEnd(true)
     gameContainer.style.backgroundColor = '#60b347';
     changeElContent(secretNumEl, `${randomNum}`);
+    disableInput(true);
     if (score.textContent > highscore.textContent) {
       changeElContent(highscore, score.textContent)
     }
@@ -79,6 +80,7 @@ function checkNumber() {
     changeElContent(message, `👎 You lost the game!`);
     gameEnd(true)
     changeElContent(secretNumEl, `${randomNum}`);
+    disableInput(true);
   }
 }
 
@@ -92,9 +94,14 @@ const playAgain = _ => {
   guessInput.value = '';
   gameContainer.style.backgroundColor = '#222';
   gameEnd(false)
+  disableInput(false);
 }
 
 again.addEventListener('click', playAgain);
+
+function disableInput(disable) {
+  guessInput.disabled = disable === true ? true : false;
+}  
 
 function gameEnd(end) {
   if (end) {

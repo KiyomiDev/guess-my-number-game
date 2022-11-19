@@ -222,3 +222,8 @@ main {
   transform-origin: top;
   transition-duration: var(--transition-duration);
 }
+
+.not-allowed {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

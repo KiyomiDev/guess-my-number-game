@@ -66,7 +66,7 @@ function checkNumber() {
   else {
     correct.play();
     changeElContent(message, `🎉 Correct Number!`);
-    checkBtn.removeEventListener('click', checkNumber);
+    gameEnd(true)
     gameContainer.style.backgroundColor = '#60b347';
     changeElContent(secretNumEl, `${randomNum}`);
     if (score.textContent > highscore.textContent) {
@@ -77,7 +77,7 @@ function checkNumber() {
   if (score.textContent === '0') {
     setTimeout(() => lost.play(), 300);
     changeElContent(message, `👎 You lost the game!`);
-    checkBtn.removeEventListener('click', checkNumber);
+    gameEnd(true)
     changeElContent(secretNumEl, `${randomNum}`);
   }
 }
@@ -91,7 +91,17 @@ const playAgain = _ => {
   changeElContent(score, selectedLevelScore);
   guessInput.value = '';
   gameContainer.style.backgroundColor = '#222';
-  checkBtn.addEventListener('click', checkNumber);
+  gameEnd(false)
 }
 
 again.addEventListener('click', playAgain);
+
+function gameEnd(end) {
+  if (end) {
+    checkBtn.removeEventListener('click', checkNumber);
+    checkBtn.classList.add('not-allowed');
+  } else {
+    checkBtn.addEventListener('click', checkNumber);
+    checkBtn.classList.remove('not-allowed');
+  }
+}
